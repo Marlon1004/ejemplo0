@@ -1,5 +1,3 @@
-from cgitb import html
-
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
@@ -7,6 +5,40 @@ from cgitb import html
     <title>Primer ejemplo</title>
   </head>
   <body>
+
+    {% include "superior/barra.html" %}
+
     <p>¡Esta es mi primera plantilla web!</p>
+
+    {% if nombre_persona == "Marlon" %}
+      <p> El curso lo imparte el titular</p>
+
+    {% endif %}
+
+    <p>¡El nombre del alumno es: {{nombre_persona}}</p>
+    <p> <strong>Temas del Curso:</strong></p>
+    
+    <!--<p> {{temas.0}}</p>
+    <p> {{temas.1}}</p>
+    <p> {{temas.2}}</p>
+    <p> {{temas.3}}</p>
+    <p> {{temas.4}}</p> esto es un comentario-->
+
+    <p>
+        <ul>
+
+        {% if temas%}
+            {% for elTema in temas %}
+                <li> 
+                    {{elTema}}
+                </li>
+            {% endfor %}
+        
+        {% else %}   
+          <p>La lista se ecuentra vacia</p> 
+        {% endif %}
+        </ul>
+    </p>
+
   </body>
 </html>
